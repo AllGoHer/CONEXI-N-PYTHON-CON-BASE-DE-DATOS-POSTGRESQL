@@ -65,8 +65,10 @@ codigo:
  ![image](https://github.com/user-attachments/assets/e5261e40-6c17-4c5d-87a8-4563274f994a)
 
 Ojo: en caso de que la importación de la librería psycopg2 no cargue, intenta instalarlo con el siguiente código en la terminal.
+
+   código:
    
-   py -m pip install psycopg2-binary      
+           py -m pip install psycopg2-binary      
 
 5.	Ahora proseguimos a insertar registros, lo cual modificaremos un poco el código para insertar los datos correctamente y mejorar el flujo a la base de datos.
 
