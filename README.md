@@ -29,21 +29,31 @@ import psycopg2
 
 try:
     conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
+    
     cursor01=conexion.cursor()
+    
     cursor01.execute('select version()')
+    
     version=cursor01.fetchone()
 
     # Imprimimos la versión si todo sale bien
+    
     print("¡Conexión exitosa!")
+    
     print(version)
     
     # CERRAMOS TODO AQUÍ DENTRO
+    
     cursor01.close()
+    
     conexion.close()
+    
     print("Conexión cerrada correctamente.")
-
+    
 except Exception as err:
+
     # Si algo falla, imprimimos el error y NO intentamos cerrar nada
+    
     print("Error al conectar a la base:", err)
 
 ![image](https://github.com/user-attachments/assets/e5261e40-6c17-4c5d-87a8-4563274f994a)
@@ -58,32 +68,50 @@ Ojo: en caso de que la importación de la librería psycopg2 no cargue, intenta 
 
 try:
     conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
+    
     cursor01=conexion.cursor()
+    
     cursor01.execute('select version()')
+    
     version=cursor01.fetchone()
 
         # Imprimimos la versión si todo sale bien
+        
     print("¡Conexión exitosa!")
+    
     print(version)
 
     # Aqui insertamos los datos para la tabla
+    
     cursor01.execute("insert into usuarios values(1001, 'Axel','admi2')")
+    
     conexion.commit() # confirma los cambios en la base de datos.
+    
     print('Datos insertados correctamente en la tabla.')
 
 except Exception as err:
+
     # Si algo falla (ej. la tabla no existe), entras aquí
+    
     print('Ocurrió un error:', err)
 
 finally:
+
     # EL BLOQUE 'finally' SIRVE PARA LIMPIEZA: 
+    
     # Se ejecuta SIEMPRE, haya error o no.
+    
     # Pero debemos verificar que 'conexion' exista antes de cerrarla.
+    
     try:
         cursor01.close()
+        
         conexion.close()
+        
         print("Conexión cerrada correctamente.")
+        
     except:
+    
         pass # Si nunca se abrió, no hay nada que cerrar, así que ignoramos el error
 
 6.	Finalmente verificamos en la terminal que el código haya corrido exitosamente y que haya enlazado correctamente con la base de datos PostgreSQL. 
