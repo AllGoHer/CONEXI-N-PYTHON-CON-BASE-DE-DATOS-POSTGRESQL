@@ -23,9 +23,10 @@ ________________________________________________________________________________
 
    ![image](https://github.com/user-attachments/assets/0dd4c222-4e1b-458d-8b07-3c82f7cdec7a)
 
-4.	Ahora que tenemos configurado la base de datos, nos vamos a nuestro editor de código (VSCode) de python y escribimos el código para conectar con la base de datos de PostgreSQL y verifica en la terminal que diga ¡Conexión exitosa!   
+4.	Ahora que tenemos configurado la base de datos, nos vamos a nuestro editor de código (VSCode) de python y escribimos el código para conectar con la base de datos de PostgreSQL y verifica en la terminal que diga ¡Conexión exitosa!:   
 
 import psycopg2
+
 try:
     conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
     cursor01=conexion.cursor()
