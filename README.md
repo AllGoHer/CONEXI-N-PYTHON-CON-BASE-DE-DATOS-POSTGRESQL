@@ -28,6 +28,7 @@ ________________________________________________________________________________
 4.	Ahora que tenemos configurado la base de datos, nos vamos a nuestro editor de código (VSCode) de python y escribimos el código para conectar con la base de datos de PostgreSQL y verifica en la terminal que diga ¡Conexión exitosa!
    
 codigo:
+       
        import psycopg2
 
        try:
