@@ -5,6 +5,8 @@ ________________________________________________________________________________
    
    ![iamge](https://github.com/user-attachments/assets/7503a2db-5c1b-430d-bd08-5ab93ec09a4d)
 
+   
+
    ![image](https://github.com/user-attachments/assets/02849009-b3d2-49f1-9dee-84ab5f4390c5)
 
 2.	Luego hacemos click derecho en Schemas y seleccionamos Query tool para abrir el editor SQL.
@@ -29,26 +31,35 @@ import psycopg2
 
 try:
     conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
+    
     cursor01=conexion.cursor()
+    
     cursor01.execute('select version()')
+    
     version=cursor01.fetchone()
 
     # Imprimimos la versión si todo sale bien
+    
     print("¡Conexión exitosa!")
+    
     print(version)
     
     # CERRAMOS TODO AQUÍ DENTRO
+    
     cursor01.close()
+    
     conexion.close()
+    
     print("Conexión cerrada correctamente.")
+    
 except Exception as err:
+
     # Si algo falla, imprimimos el error y NO intentamos cerrar nada
+    
     print("Error al conectar a la base:", err)
 
 
- 
-
-![image](https://github.com/user-attachments/assets/e5261e40-6c17-4c5d-87a8-4563274f994a)
+ ![image](https://github.com/user-attachments/assets/e5261e40-6c17-4c5d-87a8-4563274f994a)
 
 Ojo: en caso de que la importación de la librería psycopg2 no cargue, intenta instalarlo con el siguiente código en la terminal.
    
