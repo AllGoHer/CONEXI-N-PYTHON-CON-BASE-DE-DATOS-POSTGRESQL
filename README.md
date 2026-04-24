@@ -72,55 +72,59 @@ Ojo: en caso de que la importación de la librería psycopg2 no cargue, intenta 
 
 5.	Ahora proseguimos a insertar registros, lo cual modificaremos un poco el código para insertar los datos correctamente y mejorar el flujo a la base de datos.
 
-  import psycopg2
+código:
 
-try:
-    conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
-    
-    cursor01=conexion.cursor()
-    
-    cursor01.execute('select version()')
-    
-    version=cursor01.fetchone()
+       import psycopg2
 
-        # Imprimimos la versión si todo sale bien
+     try:
+    
+         conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
+    
+         cursor01=conexion.cursor()
+    
+         cursor01.execute('select version()')
+    
+         version=cursor01.fetchone()
+
+             # Imprimimos la versión si todo sale bien
         
-    print("¡Conexión exitosa!")
+         print("¡Conexión exitosa!")
     
-    print(version)
+         print(version)
 
-    # Aqui insertamos los datos para la tabla
+         # Aqui insertamos los datos para la tabla
     
-    cursor01.execute("insert into usuarios values(1001, 'Axel','admi2')")
+         cursor01.execute("insert into usuarios values(1001, 'Axel','admi2')")
     
-    conexion.commit() # confirma los cambios en la base de datos.
+         conexion.commit() # confirma los cambios en la base de datos.
     
-    print('Datos insertados correctamente en la tabla.')
+         print('Datos insertados correctamente en la tabla.')
 
-except Exception as err:
+     except Exception as err:
 
-    # Si algo falla (ej. la tabla no existe), entras aquí
+         # Si algo falla (ej. la tabla no existe), entras aquí
     
-    print('Ocurrió un error:', err)
+         print('Ocurrió un error:', err)
 
-finally:
+     finally:
 
-    # EL BLOQUE 'finally' SIRVE PARA LIMPIEZA: 
+         # EL BLOQUE 'finally' SIRVE PARA LIMPIEZA: 
     
-    # Se ejecuta SIEMPRE, haya error o no.
+         # Se ejecuta SIEMPRE, haya error o no.
     
-    # Pero debemos verificar que 'conexion' exista antes de cerrarla.
+         # Pero debemos verificar que 'conexion' exista antes de cerrarla.
     
-    try:
-        cursor01.close()
+         try:
         
-        conexion.close()
+             cursor01.close()
         
-        print("Conexión cerrada correctamente.")
+             conexion.close()
         
-    except:
+             print("Conexión cerrada correctamente.")
+        
+         except:
     
-        pass # Si nunca se abrió, no hay nada que cerrar, así que ignoramos el error
+             pass # Si nunca se abrió, no hay nada que cerrar, así que ignoramos el error
 
 6.	Finalmente verificamos en la terminal que el código haya corrido exitosamente y que haya enlazado correctamente con la base de datos PostgreSQL. 
 
