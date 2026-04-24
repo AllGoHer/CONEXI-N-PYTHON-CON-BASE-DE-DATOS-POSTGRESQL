@@ -25,38 +25,40 @@ ________________________________________________________________________________
 
    ![image](https://github.com/user-attachments/assets/0dd4c222-4e1b-458d-8b07-3c82f7cdec7a)
 
-4.	Ahora que tenemos configurado la base de datos, nos vamos a nuestro editor de código (VSCode) de python y escribimos el código para conectar con la base de datos de PostgreSQL y verifica en la terminal que diga ¡Conexión exitosa!:   
+4.	Ahora que tenemos configurado la base de datos, nos vamos a nuestro editor de código (VSCode) de python y escribimos el código para conectar con la base de datos de PostgreSQL y verifica en la terminal que diga ¡Conexión exitosa!
+   
+codigo:
+       import psycopg2
 
-import psycopg2
+       try:
+    
+           conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
+    
+           cursor01=conexion.cursor()
+    
+           cursor01.execute('select version()')
+    
+           version=cursor01.fetchone()
 
-try:
-    conexion=psycopg2.connect(database='Base_Prueba', user='postgres', password='postgres')
+           # Imprimimos la versión si todo sale bien
     
-    cursor01=conexion.cursor()
+           print("¡Conexión exitosa!")
     
-    cursor01.execute('select version()')
+           print(version)
     
-    version=cursor01.fetchone()
+           # CERRAMOS TODO AQUÍ DENTRO
+    
+           cursor01.close()
+    
+           conexion.close()
+    
+           print("Conexión cerrada correctamente.")
+    
+       except Exception as err:
 
-    # Imprimimos la versión si todo sale bien
+           # Si algo falla, imprimimos el error y NO intentamos cerrar nada
     
-    print("¡Conexión exitosa!")
-    
-    print(version)
-    
-    # CERRAMOS TODO AQUÍ DENTRO
-    
-    cursor01.close()
-    
-    conexion.close()
-    
-    print("Conexión cerrada correctamente.")
-    
-except Exception as err:
-
-    # Si algo falla, imprimimos el error y NO intentamos cerrar nada
-    
-    print("Error al conectar a la base:", err)
+           print("Error al conectar a la base:", err)
 
 
  ![image](https://github.com/user-attachments/assets/e5261e40-6c17-4c5d-87a8-4563274f994a)
